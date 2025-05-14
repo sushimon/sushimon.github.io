@@ -22,6 +22,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+      - run: git pull
       - name: Generate the HTML
         run: pelican content -o output -s publishconf.py
       - name: Edit some of the HTML
@@ -37,6 +38,5 @@ jobs:
           done
       - name: Push to gh-pages branch
         run: |
-          git pull
           ghp-import output -f -b gh-pages
           git push origin gh-pages

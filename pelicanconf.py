@@ -2,6 +2,7 @@ from datetime import datetime
 
 AUTHOR = "Richard Shi"
 SITEURL = "https://sushimon.github.io/"
+# SITEURL = "http://127.0.0.1:8000"
 SITENAME = "Richard Shi's Website"
 SITETITLE = "Richard Shi"
 SITESUBTITLE = "mscac student @ uoft"
@@ -13,7 +14,7 @@ PYGMENTS_STYLE = "monokai"
 
 ROBOTS = "index, follow"
 
-THEME = "pelican-themes/Flex"
+THEME = "Flex"
 PATH = "content"
 OUTPUT_PATH = "output/"
 TIMEZONE = "America/Toronto"

@@ -10,6 +10,7 @@ except ImportError:
     from pelicanconf import *
 
 SITEURL = "https://sushimon.github.io/"
+# SITEURL = "http://127.0.0.1:8000"
 
 RELATIVE_URLS = False
 

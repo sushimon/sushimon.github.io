@@ -12,6 +12,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          submodules: recursive
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
@@ -24,13 +26,14 @@ jobs:
         run: pelican content -o output -s publishconf.py
       - name: Edit some of the HTML
         run: |
-          # Use sed to replace the multiline string for each page
-          old_text="<p>\&copy; ([0-9]+) </p>"
-          new_text="<p>\&copy; \1 Richard Shi </p>"
-          sed -E -i "s#${old_text}#${new_text}#g" output/index.html
-          
-          for file in output/pages/*.html; do
-              sed -E -i "s#${old_text}#${new_text}#g" "$file"
+          old_texts=( "Welcome!(\r\n|\r|\n)(\s+)</a>" "<p>\&copy; ([0-9]+) </p>" )
+          new_texts=( "Home</a>" "<p>\&copy; \1 Richard Shi </p>" )
+
+          for file in $(find output -name "*.html"); do
+              for i in "${!old_texts[@]}"; do
+                  sed -z -E -i "s#${old_texts[$i]}#${new_texts[$i]}#g" "$file"
+                  sed -z -E -i "s#${old_texts[$i]}#${new_texts[$i]}#g" "$file"
+              done
           done
       - name: Push to gh-pages branch
         run: |

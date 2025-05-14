@@ -2,16 +2,14 @@
 pelican content -o output -s publishconf.py
 
 # Use sed to replace the multiline string for each page
-old_text1="Welcome!(\r\n|\r|\n)(\s+)</a>"
-new_text1="Home</a>"
-old_text2="<p>\&copy; ([0-9]+) </p>"
-new_text2="<p>\&copy; \1 Richard Shi </p>"
-sed -z -E -i "s#${old_text1}#${new_text1}#g" output/index.html
-sed -z -E -i "s#${old_text2}#${new_text2}#g" output/index.html
+old_texts=( "Welcome!(\r\n|\r|\n)(\s+)</a>" "<p>\&copy; ([0-9]+) </p>" )
+new_texts=( "Home</a>" "<p>\&copy; \1 Richard Shi </p>" )
 
-for file in output/pages/*.html; do
-    sed -z -E -i "s#${old_text1}#${new_text1}#g" "$file"
-    sed -z -E -i "s#${old_text2}#${new_text2}#g" "$file"
+for file in $(find output -name "*.html"); do
+    for i in "${!old_texts[@]}"; do
+        sed -z -E -i "s#${old_texts[$i]}#${new_texts[$i]}#g" "$file"
+        sed -z -E -i "s#${old_texts[$i]}#${new_texts[$i]}#g" "$file"
+    done
 done
 
 ghp-import output -b gh-pages

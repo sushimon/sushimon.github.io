@@ -9,7 +9,7 @@ except ImportError:
     sys.path.append(os.path.join(os.curdir, "docs"))
     from pelicanconf import *
 
-# SITEURL = "http://127.0.0.1:8000"
+SITEURL = "https://sushimon.github.io/"
 
 RELATIVE_URLS = False
 

@@ -13,7 +13,7 @@ PYGMENTS_STYLE = "monokai"
 
 ROBOTS = "index, follow"
 
-THEME = "pelican-themes/Flex"
+THEME = "Flex"
 PATH = "content"
 OUTPUT_PATH = "output/"
 TIMEZONE = "America/Toronto"

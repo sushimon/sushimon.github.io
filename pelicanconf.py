@@ -39,7 +39,7 @@ SOCIAL = (
     ("instagram", "https://www.instagram.com/rshi2vball/")
 )
 LINKS = (
-    ("resume", "https://drive.google.com/file/d/1eU3-gcgqNb24vb0TU5g8KyGZelEM2b_L/view?usp=sharing"),
+    ("resume", "https://github.com/sushimon/Richard-Shi-Resume/blob/main/Richard_Shi_resume.pdf"),
 )
 
 COPYRIGHT_YEAR = datetime.now().year
